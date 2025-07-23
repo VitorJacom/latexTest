@@ -1,0 +1,33 @@
+
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{biblatex}
+\addbibresource{references.bib}
+
+\title{Exemplo de Projeto LaTeX com GitHub Actions}
+\author{Vitor Jacom}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+Este é um exemplo de documento \LaTeX~compilado automaticamente usando GitHub Actions e publicado via GitHub Pages.
+
+\section{Figura}
+Segue uma imagem de exemplo:
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/example-image.pdf}
+\caption{Imagem de exemplo}
+\end{figure}
+
+\section{Citações}
+Podemos citar um artigo como este~\cite{knuth1984texbook}.
+
+\printbibliography
+
+\end{document}
