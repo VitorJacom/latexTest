@@ -1,32 +1,149 @@
+
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[portuguese]{babel}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
 \usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=purple}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{imakeidx}
+\makeindex
+\usepackage[acronym]{glossaries}
+\makeglossaries
 \usepackage{biblatex}
 \addbibresource{references.bib}
 
-\title{Exemplo de Projeto LaTeX com GitHub Actions}
+% Glossário e acrônimos
+\newglossaryentry{latex}{
+  name=LaTeX,
+  description={sistema de preparação de documentos}
+}
+\newacronym{pdf}{PDF}{Portable Document Format}
+
+\title{Tutorial Completo de Recursos do \\ \LaTeX\ para Geração de PDF}
 \author{Vitor Jacom}
 \date{\today}
 
 \begin{document}
 
 \maketitle
+\tableofcontents
+\newpage
 
 \section{Introdução}
-Este é um exemplo de documento \LaTeX~compilado automaticamente usando GitHub Actions e publicado via GitHub Pages 1.
+O objetivo deste documento é demonstrar os principais recursos do \gls{latex} para produção de documentos PDF profissionais, prontos para impressão ou distribuição digital. Para citar o formato final usamos o acrônimo \gls{pdf}.
 
-\section{Figura}
-Segue uma imagem de exemplo:
+\section{Formatação de Texto}\label{sec:texto}
+\index{Texto!\LaTeX}
+Podemos \textbf{destacar} informações em \textit{itálico}, \underline{sublinhado} ou
+\texttt{monoespaçado}. Além disso, listas são simples de criar:
+
+\begin{itemize}[noitemsep]
+  \item Primeiro item
+  \item Segundo item
+\end{itemize}
+
+Listas numeradas:
+
+\begin{enumerate}[label=\arabic*.]
+  \item Passo 1
+  \item Passo 2
+\end{enumerate}
+
+\section{Referências Internas e Links}
+Podemos referenciar a Seção~\ref{sec:texto} ou clicar no
+\hyperref[sec:matematica]{exemplo de matemática}. Links externos também funcionam: \url{https://www.latex-project.org}.
+
+\section{Imagens}
+A Figura~\ref{fig:exemplo} ilustra a inclusão de arquivos gráficos.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.5\textwidth]{figures/default.jpg}
-\caption{Imagem em JPEG de exemplo}
+\caption{Imagem de exemplo}\label{fig:exemplo}
 \end{figure}
 
-\section{Citações}
-Podemos citar um artigo como este~\cite{knuth1984texbook}.
+\section{Tabelas}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcr}
+\toprule
+\textbf{Nome} & \textbf{Cargo} & \textbf{Idade} \\
+\midrule
+Alice & Engenheira & 29 \\
+Bob   & Analista   & 35 \\
+\bottomrule
+\end{tabular}
+\caption{Tabela de exemplo}\label{tab:exemplo}
+\end{table}
+
+\section{Matemática}\label{sec:matematica}
+Equação inline $E = mc^2$ e bloco:
+\[
+\int_{0}^{1} x^2 \, dx = \frac{1}{3}
+\]
+Matrizes:
+\[
+A = \begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
+\]
+
+\section{Gráficos com TikZ/PGFPlots}
+\begin{tikzpicture}
+  \begin{axis}[width=8cm, height=6cm, xlabel={$x$}, ylabel={$y=x^2$}]
+    \addplot[color=blue, domain=0:4]{x^2};
+  \end{axis}
+\end{tikzpicture}
+
+\section{Código Fonte}
+\begin{lstlisting}[language=Python, caption=Exemplo em Python]
+def hello():
+    print("Olá, LaTeX!")
+\end{lstlisting}
+
+\section{Algoritmos}
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwIn{Lista $L$ de números}
+\KwOut{Lista ordenada}
+\Repeat{lista ordenada}{
+  percorra $L$ comparando elementos adjacentes\;
+  troque se estiverem fora de ordem\;
+}
+\caption{Bubble Sort simplificado}
+\end{algorithm}
+
+\section{Multicolunas}
+\begin{multicols}{2}
+Este parágrafo aparece em duas colunas, útil para relatórios ou artigos.
+\end{multicols}
+
+\section{Glossário e Acrônimos}
+A palavra \gls{latex} e o acrônimo \gls{pdf} foram definidos no preâmbulo.
+
+\printglossary[type=\acronymtype]
+\printglossary
+
+\section{Bibliografia}
+Exemplo de citação~\cite{knuth1984texbook}.
 
 \printbibliography
+
+\clearpage
+\printindex
 
 \end{document}
