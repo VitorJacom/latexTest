@@ -1,27 +1,36 @@
-
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[portuguese]{babel}
 \usepackage{geometry}
 \geometry{a4paper, margin=2.5cm}
+
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{hyperref}
 \hypersetup{colorlinks=true, linkcolor=blue, urlcolor=purple}
+
 \usepackage{amsmath, amssymb}
 \usepackage{booktabs}
+
 \usepackage{listings}
+\lstset{inputencoding=utf8}        % ← permite acentos nos trechos de código
+
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{multicol}
 \usepackage{enumitem}
+
 \usepackage{imakeidx}
 \makeindex
+
 \usepackage[acronym]{glossaries}
 \makeglossaries
+
+\usepackage{csquotes}              % ← recomendado pelo biblatex
 \usepackage{biblatex}
 \addbibresource{references.bib}
 
